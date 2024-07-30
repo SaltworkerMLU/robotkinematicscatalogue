@@ -29,7 +29,7 @@ base64-converter : https://www.base64-image.de/
 
 ## Class UML diagram of repository
 
-![image](.figures/robotKinematicsCatalogue.png)
+![image](figures/robotKinematicsCatalogue.png)
 
 
 # Introduction
