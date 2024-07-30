@@ -66,4 +66,6 @@ As of now, the repository is able to do forward kinematics (FK) on pretty much a
 
 # Test results
 
+***Testing has been done using RoboDK and the attached example files...***
+
 To be continued...
