@@ -40,7 +40,7 @@ class sixDOF(forwardKinematics):
             else:
                 IOtheta[i] = self.theta[i] + self.inv_joint[i] * joint[i]
 
-        TBW = np.eye(4)
+        TBW = self.TB0
         for i in range(start-1, ender):
             # The equation of temp implies *modified* DH-parameters are used.
             # Another equation must be used for DH-parameters (go look it up).
@@ -55,6 +55,8 @@ class sixDOF(forwardKinematics):
             # Nullify rotation of prior joint(s)
             if self.null_joint[i] != 0:
                 for j in range(1, self.null_joint[i]+1):
-                    TBW = np.dot(TBW, angleSetConventions.transformMatrix([0, 0, 0, 0, 0, -np.rad2deg(joint[i-j])], "XYZ"))
+                    TBW = np.dot(TBW, angleSetConventions.transformMatrix([0, 0, 0, 0, 0, -self.inv_joint[i-j] * np.rad2deg(joint[i-j])], "XYZ"))
+
+        TBW = np.dot(TBW, self.T6W)
 
         return TBW

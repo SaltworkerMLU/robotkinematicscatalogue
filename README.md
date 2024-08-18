@@ -39,7 +39,7 @@ $ pip install robotkinematicscatalogue
 
 
 # Introduction
-This repository is an attempt to assemble the many aspects of robot kinematics into one repository - a catalogue. Ideally, this entails the repository being able to do any kind of robot kinematics on *any* industrial manipulator (robotic arm).
+This repository is an attempt to assemble the many aspects of robot kinematics into one repository - a catalogue. Ideally, this entails the repository being able to do robot kinematics on *any* industrial manipulator (robotic arm).
 
 As of now, the repository is able to do forward kinematics (FK) on pretty much any robotic arm and inverse kinematics (IK) using most of the commercially available types of robotic arms such as:
 
@@ -58,10 +58,9 @@ As of now, the repository is able to do forward kinematics (FK) on pretty much a
 <!--
 ## A to-do list
 1. Expand range of compatible robotic arms
-    - Add 2D delta robots
-    - Make IK work for all types of SCARA robots
+    - Add 3D & 2D delta robots
     - Make IK work for all types of industrial robots
-    - Add 7DOF robots (FK and IK)
+    - Add 7DOF robots IK
 2. Include more aspects of robot kinematics
     - Jacobians and singularity analysis
     - Numerical IK solver for *any* type of robotic arm
@@ -69,26 +68,61 @@ As of now, the repository is able to do forward kinematics (FK) on pretty much a
 3. Refine code
 -->
 
-# How to use "IK_Validate_RoboDK.py"
+# Test results
 
 ![Static Badge](https://img.shields.io/badge/Tested_using_RoboDK-white?logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAQAAAAEAAgMAAAAhHED1AAAABGdBTUEAALGPC%2FxhBQAAAAFzUkdCAK7OHOkAAAAMUExURUdwTAI0WP3%2B%2FnaRpOXRQ8IAAAABdFJOUwBA5thmAAAACXBIWXMAAHUtAAB1LQGdFw%2BUAAAJDElEQVR42s1bu27kNhTdgTHllP4Ul0H8CVOYEqDYcuUiqrZJEQaxv0KfoEISFFcqF56fYLlIlUbBlm6M7DriQ3xcPkQNsUGIxb7GOnN57rlX5OXlhw%2F%2F7%2FEjQij%2F5%2BzHf0Bi3J71%2BAXSxinx%2BTMQwPObEazntyIQ8dT7%2B%2FtX8dd8y%2FNX%2FJFvHRvPZKsvduyBx04ObsX1tgm8ddp43jSJvfW8QDhu8MBjB8aneE9QBsvOGmMsj9SAvHMMEmnClU2AouE2zoCyc44xygTqgskN0Ec5Yv4h3HnGMH%2B49vzBw6Dk8eMKwKVhQD8H0%2FubYcLNKoXKgP6Vx%2BH9pJtwWqOwWH74ReWCb8v%2FNWs0EuWCT3o2eVSOyFfiuNQY1wZWWrgOq3DSok8fgso2rEZJYU8gQD5JGoMzwEq1YJRyatfrM3hGjvG20Hgb8EGmItcaYna13w9yBgNyDrw2h1lFAQOkCX4tXYoZeAxYTKi98bD8BPEB5Au%2Bl4IpaID4gt4X01diBqMfoBRzuPU4sVgSl3dMPCRzTyoQHwdGIeLh5ExmeZhCRSNxknDFZ9ii4Kg4S7dOCvAKhZLGwUmCoICEAXLB88mhgjxiBmIOxBEOe27duAYgfuroCAQcMQMxh8ERDpyC1RnwOfR2OAgKmnWAwk3CgQdCvQ4gfu6jJaNiLQ70eGgsKV2yuQ0xAJhxdWNxGOVE6UjIouCQxADkLhYPDDeKAk7CCFjcMw6HOADMWDw6OGziAEoHiwRFqkAqAUQ0ZwZFDs6i6YQsLhBUONSGGw5bOOTh0Bhu2DNmx1iAkn3b0XDCFCujRUq94QbuBIS2sGi4gWF6Oby3lkwVcMNOzMovXceib9TcsGO8jqHgsVlsNADuhDqUw0ZLi7obrtikgm%2BCwWKx1ZIS82IfohwyPJl%2BJCjghJmC3rKvMv3I5tT4Y4%2BUUGUF40wtLcqAE0pq2wQo5g%2BcDC%2F6ndBQx9eWG5QfD8yLxAtQ09%2FGB6iNQcbjnnLS%2BzNgTU1ufoZuaKUQrvg%2FvQCEmtxUBLihl0K4ROH1rQAYYTRIIVzmAS8%2BSIAW%2BpHc6DLwefEvCdBBP0ohMACPF%2FOBAZQUYAR%2BXAC4jjxeLAcs3FgZNOWakriOfCoYCvrNuBsn09OaknaUUp8Mqrak3zxLeTKnydLUtdKRTwZTn9G4m6cIXF0pJe0dSU%2Bb6vzreWJ%2FGGYyq49KiI33FUL4djEDC5BCSZEJcfTmw5qntBKsAkslxcvcDzA%2FPPJFPAaJrVRSJAEd0e%2FmxldgN8IeypUQSeAlyDiGm%2FJcSZFPx7%2BiYxkxs8oSDI4r2S9EsYd5epUVDENJDdPyjnvE%2F07p5cvBmMO0aJkpuQ28U%2BhDRWeVVqpFywxgCG3X55JqqdfT5PQ4wIFj%2BXe61D5Vnao1gJbl5b1fyViVn2R97NXQ8jEMUCnmMosDDcCrZN3sCRY3mHqOLBh9Sl6%2BtZPLjHnW76%2FapywcL3MfQKkzz2lsSumHbIkmBkBCHLbqXzS2R%2BVjDuCNpUk5QcaF4pEZfrNEc5DDUeFlmpaWeEY%2BgAxoh2bBsiO40wCQiOY%2BxOEyv9nmtujnP4i0aAwCYCj%2FqWvxTMBikQTwRfNkOIGZNOCZ0KnW4lkAtCEOlXpNgIoDXPgAMjuHYBvgxBNS61sim3u5zAa49ucTDJxAxxdK4lQbGcULMHVWHkV3RavcuAIgc1BraoP%2BAgCVM59knatCnXUvb70iqQ0AFJ0RSppdbRwAtp0wD0LV84sBcPAATA4nIPQ645IHDeAjBxj9HJqB%2BiWfOWlksAUAMvtNQsffTE4GwJ5HlcXhy5vrmICKCCsLaF73APy%2B0GjSMz2jvBtiACQNI6D2D4m5CuAq7%2BmF5zBAPhub2Xteve4bBmBCt7ej0RbwDTd27VjjLOAb7sLSaLQFfHWaWZ9EW8BFmFtv3VgLlrMM65UVa8H82fMs5Xrq0XkWFB19hc37pPZMCwr6LfM2DTdnWoD54rLB47oFznxQ8Q33UNQu90YklIrvVoeCuOKrtgEaN0D7kyVxegiL7Jxoc8XE0N6tFAUpwC4EgFYBPO%2BFhQP3JgoC4PMBvC%2FXxY3O902D1t%2FOi5ASAJiUG%2FdOFALYS5y7JZicADUy1kiuRdavs8jom6l2pnoA4Frm%2FbYklNoFQJCxzHOtVKslpY0u9RC0utSdiEiqjWsBjSIARp7WyzgAe7nfNfwYBA%2BOdUOPwHLf3nDQKGJb%2FqldA8idWx5as8nnarYrHPOnrwhseexN1%2FJCwsFTm9zYtdWAqF6wZD%2F3ROC2z954ihLto3MvhWu48bS3vsyHL9%2FcJ1cSQG597c231slia1km6sDufSOAXYCozA4iD4AsQNgZResmaoIAg6cIEwegFWHgxhF0IIFosspAFxBA70dqVwBOoVLY3efPf371A8hSWKgY59qS28U4UA5kL2A1rHi2y4GgIAlauqCU7u2CJCiJYrsZzYhiuyQKirKRAFpRFpSFIwG0sjAoTK8AOArToDQeCaCVxkFxfsULjuJ88HgglFLlQZM4rtg0MqVkcERy%2Fw4G8RY75RGJfkiTO7sS3dUBeUijHxM5miO9e0p5TKQfVBU2QO2RgTqo0o%2FKcCSAcVSmH9ZFApiHdfpxYSSAeVyoH1hGApgHlvqRaSSAeWSqH9pGAoBDW%2B3YOBIAHBtrB9eRAODgWjs6jwOAR%2Bfa4X0cADy83wnI6IFhF0e4gcHtBKOPJLmFIrmJI7mN5CB6UyKH3ciS3EqT3MyT3k7EG5rGeA5hQ1NyS1VyU1dyW1lyY1t6ax1v7utiVWA3921sLxyt9sLkBkfRYtnHBYKjxTK9yTO5zTS50XVjq%2B33aPZNbjdObni%2BMOuVARV5Wq6Tm77T2843NL5ff5%2FW%2B%2FTm%2F%2BTrB8kXIJKvYKRfAkm%2BhqIuwtiTiLoIQ%2BdQha%2Fi9OGrOMmXgZKvI6VfiEq%2BkgUuhT3Tnee05VJY%2BrW05ItxlMY86Wpe8uXA5OuJ6Rckk69opl8STb6mmn5RVlzVfQL2b7iqu1wWFka88PS06eL2ktGeVEVx03Xl9AvTyVe20y%2BNp19bT784z67uU2%2Bcf3X%2Fvxn%2FAtILvIcLIIzkAAAAAElFTkSuQmCC&logoColor=white&labelColor=grey) <!-- Tested using RoboDK badge --> 
 ![Static Badge](https://img.shields.io/badge/RoboDK--api-white?logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAQAAAAEAAgMAAAAhHED1AAAABGdBTUEAALGPC%2FxhBQAAAAFzUkdCAK7OHOkAAAAMUExURUdwTAI0WP3%2B%2FnaRpOXRQ8IAAAABdFJOUwBA5thmAAAACXBIWXMAAHUtAAB1LQGdFw%2BUAAAJDElEQVR42s1bu27kNhTdgTHllP4Ul0H8CVOYEqDYcuUiqrZJEQaxv0KfoEISFFcqF56fYLlIlUbBlm6M7DriQ3xcPkQNsUGIxb7GOnN57rlX5OXlhw%2F%2F7%2FEjQij%2F5%2BzHf0Bi3J71%2BAXSxinx%2BTMQwPObEazntyIQ8dT7%2B%2FtX8dd8y%2FNX%2FJFvHRvPZKsvduyBx04ObsX1tgm8ddp43jSJvfW8QDhu8MBjB8aneE9QBsvOGmMsj9SAvHMMEmnClU2AouE2zoCyc44xygTqgskN0Ec5Yv4h3HnGMH%2B49vzBw6Dk8eMKwKVhQD8H0%2FubYcLNKoXKgP6Vx%2BH9pJtwWqOwWH74ReWCb8v%2FNWs0EuWCT3o2eVSOyFfiuNQY1wZWWrgOq3DSok8fgso2rEZJYU8gQD5JGoMzwEq1YJRyatfrM3hGjvG20Hgb8EGmItcaYna13w9yBgNyDrw2h1lFAQOkCX4tXYoZeAxYTKi98bD8BPEB5Au%2Bl4IpaID4gt4X01diBqMfoBRzuPU4sVgSl3dMPCRzTyoQHwdGIeLh5ExmeZhCRSNxknDFZ9ii4Kg4S7dOCvAKhZLGwUmCoICEAXLB88mhgjxiBmIOxBEOe27duAYgfuroCAQcMQMxh8ERDpyC1RnwOfR2OAgKmnWAwk3CgQdCvQ4gfu6jJaNiLQ70eGgsKV2yuQ0xAJhxdWNxGOVE6UjIouCQxADkLhYPDDeKAk7CCFjcMw6HOADMWDw6OGziAEoHiwRFqkAqAUQ0ZwZFDs6i6YQsLhBUONSGGw5bOOTh0Bhu2DNmx1iAkn3b0XDCFCujRUq94QbuBIS2sGi4gWF6Oby3lkwVcMNOzMovXceib9TcsGO8jqHgsVlsNADuhDqUw0ZLi7obrtikgm%2BCwWKx1ZIS82IfohwyPJl%2BJCjghJmC3rKvMv3I5tT4Y4%2BUUGUF40wtLcqAE0pq2wQo5g%2BcDC%2F6ndBQx9eWG5QfD8yLxAtQ09%2FGB6iNQcbjnnLS%2BzNgTU1ufoZuaKUQrvg%2FvQCEmtxUBLihl0K4ROH1rQAYYTRIIVzmAS8%2BSIAW%2BpHc6DLwefEvCdBBP0ohMACPF%2FOBAZQUYAR%2BXAC4jjxeLAcs3FgZNOWakriOfCoYCvrNuBsn09OaknaUUp8Mqrak3zxLeTKnydLUtdKRTwZTn9G4m6cIXF0pJe0dSU%2Bb6vzreWJ%2FGGYyq49KiI33FUL4djEDC5BCSZEJcfTmw5qntBKsAkslxcvcDzA%2FPPJFPAaJrVRSJAEd0e%2FmxldgN8IeypUQSeAlyDiGm%2FJcSZFPx7%2BiYxkxs8oSDI4r2S9EsYd5epUVDENJDdPyjnvE%2F07p5cvBmMO0aJkpuQ28U%2BhDRWeVVqpFywxgCG3X55JqqdfT5PQ4wIFj%2BXe61D5Vnao1gJbl5b1fyViVn2R97NXQ8jEMUCnmMosDDcCrZN3sCRY3mHqOLBh9Sl6%2BtZPLjHnW76%2FapywcL3MfQKkzz2lsSumHbIkmBkBCHLbqXzS2R%2BVjDuCNpUk5QcaF4pEZfrNEc5DDUeFlmpaWeEY%2BgAxoh2bBsiO40wCQiOY%2BxOEyv9nmtujnP4i0aAwCYCj%2FqWvxTMBikQTwRfNkOIGZNOCZ0KnW4lkAtCEOlXpNgIoDXPgAMjuHYBvgxBNS61sim3u5zAa49ucTDJxAxxdK4lQbGcULMHVWHkV3RavcuAIgc1BraoP%2BAgCVM59knatCnXUvb70iqQ0AFJ0RSppdbRwAtp0wD0LV84sBcPAATA4nIPQ645IHDeAjBxj9HJqB%2BiWfOWlksAUAMvtNQsffTE4GwJ5HlcXhy5vrmICKCCsLaF73APy%2B0GjSMz2jvBtiACQNI6D2D4m5CuAq7%2BmF5zBAPhub2Xteve4bBmBCt7ej0RbwDTd27VjjLOAb7sLSaLQFfHWaWZ9EW8BFmFtv3VgLlrMM65UVa8H82fMs5Xrq0XkWFB19hc37pPZMCwr6LfM2DTdnWoD54rLB47oFznxQ8Q33UNQu90YklIrvVoeCuOKrtgEaN0D7kyVxegiL7Jxoc8XE0N6tFAUpwC4EgFYBPO%2BFhQP3JgoC4PMBvC%2FXxY3O902D1t%2FOi5ASAJiUG%2FdOFALYS5y7JZicADUy1kiuRdavs8jom6l2pnoA4Frm%2FbYklNoFQJCxzHOtVKslpY0u9RC0utSdiEiqjWsBjSIARp7WyzgAe7nfNfwYBA%2BOdUOPwHLf3nDQKGJb%2FqldA8idWx5as8nnarYrHPOnrwhseexN1%2FJCwsFTm9zYtdWAqF6wZD%2F3ROC2z954ihLto3MvhWu48bS3vsyHL9%2FcJ1cSQG597c231slia1km6sDufSOAXYCozA4iD4AsQNgZResmaoIAg6cIEwegFWHgxhF0IIFosspAFxBA70dqVwBOoVLY3efPf371A8hSWKgY59qS28U4UA5kL2A1rHi2y4GgIAlauqCU7u2CJCiJYrsZzYhiuyQKirKRAFpRFpSFIwG0sjAoTK8AOArToDQeCaCVxkFxfsULjuJ88HgglFLlQZM4rtg0MqVkcERy%2Fw4G8RY75RGJfkiTO7sS3dUBeUijHxM5miO9e0p5TKQfVBU2QO2RgTqo0o%2FKcCSAcVSmH9ZFApiHdfpxYSSAeVyoH1hGApgHlvqRaSSAeWSqH9pGAoBDW%2B3YOBIAHBtrB9eRAODgWjs6jwOAR%2Bfa4X0cADy83wnI6IFhF0e4gcHtBKOPJLmFIrmJI7mN5CB6UyKH3ciS3EqT3MyT3k7EG5rGeA5hQ1NyS1VyU1dyW1lyY1t6ax1v7utiVWA3921sLxyt9sLkBkfRYtnHBYKjxTK9yTO5zTS50XVjq%2B33aPZNbjdObni%2BMOuVARV5Wq6Tm77T2843NL5ff5%2FW%2B%2FTm%2F%2BTrB8kXIJKvYKRfAkm%2BhqIuwtiTiLoIQ%2BdQha%2Fi9OGrOMmXgZKvI6VfiEq%2BkgUuhT3Tnee05VJY%2BrW05ItxlMY86Wpe8uXA5OuJ6Rckk69opl8STb6mmn5RVlzVfQL2b7iqu1wWFka88PS06eL2ktGeVEVx03Xl9AvTyVe20y%2BNp19bT784z67uU2%2Bcf3X%2Fvxn%2FAtILvIcLIIzkAAAAAElFTkSuQmCC&logoColor=white&labelColor=grey)
  <!-- RoboDK-API badge -->
-
+ 
 Using the python program "IK_Validate.py", any robot which has an attached inverse Kinematics method to it may have its IK solution be validated. It is recommended to do this before further use in case any bugs occur.
 
 Using RoboDK, it is possible to visualize the obtained IK solutions and to compare results as multiple sources of error can occur. This is where "IK_Validate_RoboDK.py" comes into play.
 
-## Install RoboDK and RoboDK-API
+### Install RoboDK using the link: https://robodk.com/download
 
-Download RoboDK using the link: https://robodk.com/download
-
-To use RoboDK-API, open cmd and type:
+The RoboDK-API can be installed using cmd:
 ```
 $ pip install robodk
 ```
 
-The used robots can be found using this link: https://robodk.com/library
+### RoboDK robot Library link: https://robodk.com/library
+
+The used data has been obtained via. the above link by opening the files of each robot model in RoboDK. This data consists of the essentials, such as DHM-parameters and joint range, needed to simulate each of these robots. 
+
+As of now, the data of *many* of the accessible robots via the above link have been imported including:
+- 26 7DOF robots
+- Approx. 350 6DOF robots
+    - Approx. 100 "collaborative" robots
+    - Approx. 250 industrial robots (mostly ABB & KUKA robots)
+- 13 5DOF robots (12 industrial robots and 1 PPPRR robot)
+- 4DOF robots
+    - 34 palletizing robots
+    - 108 SCARA robots
+    - <del> 25 delta robots </del>
+- Misc.
+    - A couple 1DOF & 2DOF rotational mechanisms
+    - A couple 1DOF, 2DOF, and 3DOF translational mechanisms
+
+This list excludes robots with 2 arms.
+
+All the data of each of these robots are available in the subfolders "robotkinematicscatalogue/inversekinematics/.../".
+
+<!--
+### The Robot catalogue
+
+| Robot name | File name (.py) | Degrees of Freedom | Notes |
+| - | - | - | - |
+| ABB IRBP L300 L1250 | ABB_IRBP_L300_L1250 |  1 (R) | Doesn't have IK algorithm
+| ABB IRBP 4004 Standard 20m | ABB_IRBP_4004_Standard_20m | 1 (P) | Doesn't have IK algorithm
+| Motoman MSR-355 | Motoman_MSR_355 | 1 (R) | Doesn't have IK algorithm
+| ABB IRBP A250 D1000 | ABB_IRBP_A250_D1000 | 2 (RR) | Doesn't have IK algorithm
+| ABB IRBP A500 D1000 H700 | ABB_IRBP_A500_D1000_H700 | 2 (RR) | Doesn't have IK algorithm
+| ABB IRBP A500 D1000 H900 | ABB_IRBP_A500_D1000_H900 | 2 (RR) | Doesn't have IK algorithm
+| ABB IRBP A500 D1450 H700 | ABB_IRBP_A500_D1450_H700 | 2 (RR) | Doesn't have IK algorithm
+| ABB IRBP A500 D1450 H900 | ABB_IRBP_A500_D1450_H900 | 2 (RR) | Doesn't have IK algorithm
+| ABB IRBP A500 D1450 H900 | ABB_IRBP_A500_D1450_H900 | 2 (RR) | Doesn't have IK algorithm>
+
+-->
 
 ## Test results
 
@@ -98,5 +132,3 @@ The result of using "IK_Validate_RoboDK.py" on a SCARA, palletizing, "collaborat
 ![image](figures/IK_Validate_ABB_IRB_260.jpg)
 ![image](figures/IK_Validate_KUKA_KR3_R540.jpg)
 ![image](figures/IK_Validate_UR5.jpg)
-
-***To be continued...***

@@ -37,7 +37,7 @@ print("\n 6DOF ZYX euler angle representation:")
 printMatrix(angleSetConventions.sixDOF(TBW, "ZYX"))
 
 solutions, wrongSolutions = usedRobot.IK(TBW)
-printMatrix(solutions[:8,:])
+printMatrix(solutions) # [:8,:]
 
 # Print test results
 message = 'IK VALIDATION RESULT:\n' + ' -> '+ str(len(solutions)) + ' total IK solutions\n' + ' -> '+ str(len(wrongSolutions)) + ' incorrect IK solutions'

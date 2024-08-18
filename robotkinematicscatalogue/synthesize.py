@@ -10,6 +10,7 @@ from robotkinematicscatalogue.inversekinematics.__6DOF.sixDOF import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.collaborativeRobot import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.industrialRobot import *
 
+from robotkinematicscatalogue.inversekinematics.misc import *
 from robotkinematicscatalogue.inversekinematics.palletizing import *
 from robotkinematicscatalogue.inversekinematics.SCARA import *
 from robotkinematicscatalogue.inversekinematics.fiveDOF import *

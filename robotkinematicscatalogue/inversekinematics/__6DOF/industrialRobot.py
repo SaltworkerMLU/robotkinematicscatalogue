@@ -13,7 +13,7 @@ class industrialRobot(sixDOF):
         
         for i in range(len(self.null_joint)):
             if self.null_joint[i] != 0:
-                print("ATTENTION: Nullified joints causes a fluxuating joint range. Some solutions may be out of joint range.")
+                print("ATTENTION: Nullified joints cause a fluxuating joint range. Some solutions may be out of joint range.")
 
         T06s = np.linalg.inv(self.TB0) @ TBW @ np.linalg.inv(self.T6W)
 
@@ -38,7 +38,7 @@ class industrialRobot(sixDOF):
             Joint[i, 0] *= self.inv_joint[0]
 
             # Acquiring Theta2 and Theta3 - each have 4 possible solutions adjacent with one another
-            T01 = np.linalg.inv(self.TB0) @ np.linalg.inv(T00) @ self.FK(Joint[i, :], 1, 1)
+            T01 = np.linalg.inv(self.TB0) @ np.linalg.inv(T00) @ self.FK(Joint[i, :], 1, 1) @ np.linalg.inv(self.T6W)
             T16 = np.linalg.inv(T01) @ T06
 
             s = T16[2, 3]
@@ -80,22 +80,22 @@ class industrialRobot(sixDOF):
                 Joint[i, 2] += np.pi*2
 
             Joint[i, 1] = self.inv_joint[1] * Joint[i, 1]
-            Joint[i, 2] = self.inv_joint[2] * Joint[i, 2]  # (Joint[i, 2] - self.theta[2])
+            Joint[i, 2] = self.inv_joint[2] * Joint[i, 2] + np.pi/2 + self.theta[1] + self.theta[2]
 
             if self.null_joint[2] == 1:
-                Joint[i, 2] -= self.inv_joint[1] * Joint[i, 1]
+                Joint[i, 2] += self.inv_joint[2] * Joint[i, 1]
 
             # Acquiring Theta4, Theta5 & Theta6
-            T12 = self.FK(Joint[i, :], 2, 2)
-            T23 = self.FK(Joint[i, :], 3, 3)
+            T12 = np.linalg.inv(self.TB0) @ self.FK(Joint[i, :], 2, 2) @ np.linalg.inv(self.T6W)
+            T23 = np.linalg.inv(self.TB0) @ self.FK(Joint[i, :], 3, 3) @ np.linalg.inv(self.T6W)
             T03 = T01 @ T12 @ T23
             T36 = np.linalg.inv(T03) @ T06
 
             phi = np.real( np.arccos(T36[1,2]) )
 
-            phi = [phi - self.theta[4], -phi - self.theta[4]]
+            phi = [phi, -phi]
 
-            Joint[i, 4] = phi[i % 2]
+            Joint[i, 4] = phi[i % 2] - self.theta[4]
 
             Joint[i, 3] = np.arctan2(T36[2,2] * np.sin(Joint[i,4]), -T36[0,2] * np.sin(Joint[i, 4]))
             Joint[i, 5] = np.arctan2(T36[1,1] * np.sin(Joint[i,4]), -T36[1,0] * np.sin(Joint[i, 4])) - np.pi + self.theta[5]
