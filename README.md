@@ -30,7 +30,7 @@ This section goes into detail on the methods used in the python file "angleSetCo
 
 Understanding Robot Kinematcs starts with the idea that any rigid body can move in 6 degrees of freedom (6DOF). A figure depicting said 6DOF is shown below with the dimensions $P = [ x, y, z, R_Z, R_Y, R_X ]^T$.
 
-![image](.figures/6DOF.png)
+![image](figures/6DOF.png)
 
 The position of $P$ can be depicted using the 3 axes vector $P_{xyz} = [ x, y, z ]^T$, while the orientation of $P$ can be depicted using the above 3 angles. For reference, a rotation of the z-axis alone can be depicted as the below matrix:
 
@@ -212,7 +212,7 @@ Note that for any joint or DOF over time $θ(t)$, movement between 2 positions m
 - $\dot{θ}(f) = \dot{θ}_f$
 
 ### Cubic Polynomial
-<img src=".figures/CubicP.jpg" alt="drawing" width="200"/> <img src=".figures/dCubicP.jpg" alt="drawing" width="200"/> <img src=".figures/ddCubicP.jpg" alt="drawing" width="200"/>
+<img src="figures/CubicP.jpg" alt="drawing" width="200"/> <img src="figures/dCubicP.jpg" alt="drawing" width="200"/> <img src="figures/ddCubicP.jpg" alt="drawing" width="200"/>
 
 IMAGE SOURCE: [1]
 
@@ -254,7 +254,7 @@ $$\text{moveJ}(t) = \begin{bmatrix}
 
 ### Linear Segments with Parabolic Blend  (LSPB)
 
-![image](.figures/ParabolicBlend.png)
+![image](figures/ParabolicBlend.png)
 
 IMAGE SOURCE: [1]
 
@@ -324,7 +324,7 @@ To map the wrist of any robotic arm, its position relative to its base must be f
 
 Acquiring the transform matrix ${^B_W T}$ is done by using the relation between each joint of a robotic arm. The figure below depicts a transformation between two joints $^{i-1}_i T$.
 
-![image](.figures/KinematicLinks.png)
+![image](figures/KinematicLinks.png)
 
 IMAGE SOURCE: [1]
 
@@ -470,7 +470,7 @@ $$\begin{Bmatrix}
 
 And because the SCARA robot only rotates around its own z-axis, as depicted by ${^B_W T}$ the SCARA robot keeps its rotations on an XY-plane. Thus, $θ_1$ and $θ_2$ can be plotted as shown below:
 
-<img src=".figures/SCARA_geogebra.png" alt="drawing" height="250"/> <img src=".figures/SCARA_robodk.png" alt="drawing" height="250"/>
+<img src="figures/SCARA_geogebra.png" alt="drawing" height="250"/> <img src="figures/SCARA_robodk.png" alt="drawing" height="250"/>
 
 Note how the transform matrix ${^B_3 T}$ has the same x- and y-coordinates as ${^B_W T}$ because $d3$ and $θ_4$ have no impact on said coordinates.
 
@@ -587,7 +587,7 @@ $${^B_5 T}={^B_W T} \cdot {^5_W T}^{-1}$$
 
 Using ${^B_5 T}$, it turns out that the direction the robot is facing solely depends on $θ 1$ as shown in the figure below: 
 
-<img src=".figures/palletizingRobot_theta1.png" alt="drawing" height="250"/> <img src=".figures/palletizingRobot_theta1_robodk.png" alt="drawing" height="250"/>
+<img src="figures/palletizingRobot_theta1.png" alt="drawing" height="250"/> <img src="figures/palletizingRobot_theta1_robodk.png" alt="drawing" height="250"/>
 
 Because of this, $θ 1$ can be found as the inverse tangent of the adjacent ${^B_5 T_y}$ and the opposite ${^B_5 T_x}$. And to take into account all $360 \degree$ around the robot, atan2 is used:
 
@@ -617,7 +617,7 @@ $$ {^2_4 T} = {^1_2 T}^{-1} \cdot {^1_4 T} $$
 
 Doing so allows ${^2_4 T}$, to form a triangle which can be shaped as shown in the figure below:
 
-<img src=".figures/palletizingRobot_theta2_robodk.png" alt="drawing" height="250"/> <img src=".figures/palletizingRobot_theta2.png" alt="drawing" height="250"/>
+<img src="figures/palletizingRobot_theta2_robodk.png" alt="drawing" height="250"/> <img src="figures/palletizingRobot_theta2.png" alt="drawing" height="250"/>
 
 Notice how the frame of ${^B_2 T}$ is not rotated along $\theta 2$. This allows $\phi_1$ to be found as the angle between ${^2_4 T}$ and its own x-axis:
 
@@ -663,7 +663,7 @@ $$\begin{bmatrix}
 
 The inverse Kinematics used for any palletizing robot can be found in the python file "robotKinematics/inverseKinematics/__4DOF/palletizingRobot.py". Do note that although 2 unique Inverse Kinematic Solutions are available, more often than not, only one of them generally proves suffificent to use. Below, another Inverse Kinematic Solution to the above image can be seen.
 
-<img src=".figures/palletizingRobot_robodk_no.png" alt="drawing" height="300"/> 
+<img src="figures/palletizingRobot_robodk_no.png" alt="drawing" height="300"/> 
 
 This trend continues with basically any other palletizing robot. But again, it is not in all poses that only 1 sufficient Inverse Kinematic Solution may be used.
 
@@ -751,7 +751,7 @@ ${^0_5 P} = {^0_6 T} \cdot [ 0 \text{   } 0 \text{   } -d_6 \text{ } 1 ]^T$
 
 The position ${^0_5 P}$ allows the problem to be analysed in an XY-plane as shown below:
 
-<img src=".figures/collaborativeRobot_theta1.png" alt="drawing" height="300"/> <img src=".figures/collaborativeRobot_theta1_roboDK.png" alt="drawing" height="300"/>
+<img src="figures/collaborativeRobot_theta1.png" alt="drawing" height="300"/> <img src="figures/collaborativeRobot_theta1_roboDK.png" alt="drawing" height="300"/>
 
 By using the temporary angles $\phi_1$ and $\phi_2$, $θ 1$ may be found using the equation below: 
 
@@ -772,7 +772,7 @@ $${^1_6 T} = ({^B_0 T}^{-1} \cdot {^B_1 T}) \cdot {^0_6 T}$$
 
 Upon observation of the figure above, the joint $θ 5$ rotates around the z-axis of $^4_5 T$ ...
 
-<img src=".figures/collaborativeRobot_theta5.png" alt="drawing" height="300"/> <img src=".figures/collaborativeRobot_theta5_roboDK.png" alt="drawing" height="300"/>
+<img src="figures/collaborativeRobot_theta5.png" alt="drawing" height="300"/> <img src="figures/collaborativeRobot_theta5_roboDK.png" alt="drawing" height="300"/>
 
 Using the figure above, it may be observed  $θ 5$ can be found by using using ${^0_6 P_{xy}}$ in conjunction with the equation below:
 
@@ -818,7 +818,7 @@ $${^1_4 T} = {^1_6 T} \cdot {^4_5 T}^{-1} \cdot {^5_6 T}^{-1}$$
 
 At this point, the rest of the joints can be visualized using only the 2D-plane shown below:
 
-<img src=".figures/collaborativeRobot_theta3_roboDK.png" alt="drawing" height="300"/>
+<img src="figures/collaborativeRobot_theta3_roboDK.png" alt="drawing" height="300"/>
 
 As a result, $θ 3$ can be found using the law of Cosine and isolating for $θ 3$.
 
@@ -969,7 +969,7 @@ __i__ | $α_{i-1}$ | $a_{i-1}$ | $d_i$ | $θ_i$
 
 By using $^0_6 T$, it becomes possible to find $θ 1$ by using the presumption that said joint is the only one affecting the x- and y-dimension of $^0_6 T$. This becomes evident upon inspection of the figures below:
 
-<img src=".figures/industrialRobot_theta1.png" alt="drawing" height="300"/> <img src=".figures/industrialRobot_theta1_roboDK.png" alt="drawing" height="300"/>
+<img src="figures/industrialRobot_theta1.png" alt="drawing" height="300"/> <img src="figures/industrialRobot_theta1_roboDK.png" alt="drawing" height="300"/>
 
 In the pose shown above, notice how the joints of ${^1_2 T}$ and ${^2_3 T}$ do not affect the direction ${^0_6 T}$ faces, but only manipulate the lengths of the DHM-parameters $a_1$, $a_2$, and $d_4$ in relation to the XY-plane. And because $a_3$ is the x-coordinate of ${^2_3 T}$, neither does it affect the direction of ${^0_6 T}$.
 
@@ -991,7 +991,7 @@ $${^1_6 T} = ({^B_0 T}^{-1} \cdot {^B_1 T}) \cdot {^0_6 T}$$
 
 Using $θ 2$ and $θ 3$, the DHM-parameters $a_2$, $a_3$, and $d_4$ are the 3 lengths left to take into consideration. These parameters have been visualized using the figures below:
 
-<img src=".figures/industrialRobot_theta2.png" alt="drawing" height="225"/> <img src=".figures/industrialRobot_theta2_roboDK.png" alt="drawing" height="225"/>
+<img src="figures/industrialRobot_theta2.png" alt="drawing" height="225"/> <img src="figures/industrialRobot_theta2_roboDK.png" alt="drawing" height="225"/>
 
 An emphasis should be put on the triangle formed between ${^1_2 T}$, ${^2_3 T}$, and ${^3_4 T}$, as the Law of Cosine can be used to find the temporary angle $\phi_1$.
 
