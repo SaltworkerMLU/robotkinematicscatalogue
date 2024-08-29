@@ -10,7 +10,7 @@ class TM5_700(collaborativeRobot):
                         [   0,          329,        0,          0           ],
                         [   0,          311,        122.3,      -np.pi/2    ],
                         [   -np.pi/2,   0,          106.5,      0           ],
-                        [   np.pi/2,    0,          114.15,     np.pi       ]])
+                        [   np.pi/2,    0,          114.15,     0           ]])
          
         self.alpha = DHM[:,0]
         self.a = DHM[:,1]

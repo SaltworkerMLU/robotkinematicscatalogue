@@ -3,12 +3,12 @@ from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.ABB_IRB460 
 from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.ABB_IRB660_180 import *
 from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.ABB_IRB660_250 import *
 from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.ABB_IRB760 import *
-from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.Comau_Smart5_PAL_180 import *
-from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.Comau_Smart5_PAL_260 import *
+from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.Comau_Smart5_PAL_180 import * # NOTE: theta3 = 0 in RoboDK
+from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.Comau_Smart5_PAL_260 import * # NOTE: theta3 = 0 in RoboDK
 from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.DobotMagician import *
 from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.DobotMagicianLite import *
 from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.DobotMG400 import *
-from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.Fanuc_M410iB_300 import *
+from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.Fanuc_M410iB_300 import * # IK doesn't work???
 from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.Fanuc_M410iB_700 import *
 from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.Fanuc_M410iC_110 import *
 from robotkinematicscatalogue.inversekinematics.__4DOF.__palletizing.Fanuc_M410iC_185 import *

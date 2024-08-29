@@ -2,7 +2,7 @@ from robotkinematicscatalogue.inversekinematics.__4DOF.palletizingRobot import *
 
 class Fanuc_M410iB_300(palletizingRobot):
 
-    def __init__(self, base=np.eye(4), gripper=np.eye(4)):
+    def __init__(self, base=np.eye(4), gripper=angleSetConventions.transformMatrix([0, 0, 0, 180, 0, 0], "ZYX")): # 
 
         # Modified Denavit-Hartenberg parameters (DHM)
         DHM = np.array([[   0,          0,          1596,       0           ],

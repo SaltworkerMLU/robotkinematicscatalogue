@@ -22,7 +22,7 @@ class JAKA_Zu20(collaborativeRobot):
         self.jointMin = [-360, -85, -175, -85, -360, -360] # degrees & mm
 
         # Identify inverted joints - joints that rotate counterclockwise in local z-axis frame
-        self.inv_joint = [1, 1, 1, 1, -1, 1]
+        self.inv_joint = [1] * 6
                 
         # Identify nullified joints - prior joints that cancel out at specified self.null_joint element
         self.null_joint = [0, 0, 0, 0, 0, 0]

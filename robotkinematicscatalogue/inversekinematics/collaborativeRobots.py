@@ -29,10 +29,11 @@ from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Dob
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Dobot_CR12A import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Dobot_CR16 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Dobot_CR16A import *
-from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Dobot_CR20A import * # theta5 = 1 * np.pi / 180
+from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Dobot_CR20A import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Dobot_Magician_E6 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Dobot_Nova2 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Dobot_Nova5 import *
+from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Efort_GR680 import * # doesn't work because of "wild" theta values
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Elephant_Robotics_myCobot_320 import * # Not available on roboDK library
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Elephant_Robotics_myCobot_Pro600 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Elite_Robots_CS63 import *
@@ -50,6 +51,8 @@ from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.FAI
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.FAIR_Innovation_FR5 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.FAIR_Innovation_FR10 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.FAIR_Innovation_FR20 import *
+from robotkinematicscatalogue.inversekinematics.__6DOF.__industrialRobots.Hans_S20_1700 import *
+from robotkinematicscatalogue.inversekinematics.__6DOF.__industrialRobots.Hans_S30_1800 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Hanwha_HCR3 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Hanwha_HCR5 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.IIMT_CA_05 import *
@@ -62,7 +65,15 @@ from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.JAK
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.JAKA_Zu7 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.JAKA_Zu12 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.JAKA_Zu18 import *
-from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.JAKA_Zu20 import * # IK not working???
+from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.JAKA_Zu20 import *
+from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Omron_TM5_700 import *
+from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Omron_TM5_900 import *
+from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Omron_TM5X_700 import *
+from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Omron_TM5X_900 import *
+from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Omron_TM12 import *
+from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Omron_TM12X import *
+from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Omron_TM14 import *
+from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Omron_TM14X import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.RB3_1200 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.RB5_850 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.RB5_850A import *
@@ -81,15 +92,15 @@ from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Sta
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM5_700 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM5_900 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM5S import *
-from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM5SX import * # inprecise when testing in robodk
+from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM5SX import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM5X_700 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM5X_900 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM7S import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM7SX import *
-from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM12 import * # inprecise when testing in robodk
+from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM12 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM12S import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM12SX import *
-from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM12X import * # inprecise when testing in robodk
+from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM12X import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM14 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM14S import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM14SX import *
@@ -100,6 +111,7 @@ from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM2
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.TM20X import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.Toney_M10 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.UR3 import *
+from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.UR3e import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.UR5 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.UR5e import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.UR10 import *
@@ -107,4 +119,3 @@ from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.UR1
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.UR16e import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.UR20 import *
 from robotkinematicscatalogue.inversekinematics.__6DOF.__collaborativeRobots.UR30 import *
-# Road to ~ 136

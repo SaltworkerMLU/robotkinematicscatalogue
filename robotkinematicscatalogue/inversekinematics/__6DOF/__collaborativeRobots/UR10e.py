@@ -7,7 +7,7 @@ class UR10e(collaborativeRobot):
         # Modified Denavit-Hartenberg parameters (DHM)
         DHM = np.array([[   0,          0,          180.7,      0           ],
                         [   np.pi/2,    0,          0,          np.pi       ],
-                        [   0,          612.7,      0,          0           ],
+                        [   0,          612.6,      0,          0           ],
                         [   0,          571.335,    174.15,     0           ],
                         [   -np.pi/2,   0,          119.85,     0           ],
                         [   np.pi/2,    0,          116.55,     np.pi       ]])

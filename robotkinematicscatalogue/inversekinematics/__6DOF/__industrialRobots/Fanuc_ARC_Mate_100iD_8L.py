@@ -5,12 +5,12 @@ class Fanuc_ARC_Mate_100iD_8L(industrialRobot):
     def __init__(self, base=np.eye(4), gripper=np.eye(4)):
                                 
         # Modified Denavit-Hartenberg parameters (DHM)
-        DHM = np.array([[   0,          0,          450,        0           ],
+        DHM = np.array([[   0,          0,          0,          0           ],
                         [   -np.pi/2,   75,         0,          -np.pi/2    ],
                         [   0,          840,        0,          0           ],
                         [   -np.pi/2,   195,        1100,       0           ],
                         [   np.pi/2,    0,          0,          0           ],
-                        [   -np.pi/2,   0,          75,         np.pi       ]])
+                        [   -np.pi/2,   0,          75,         0           ]])
          
         self.alpha = DHM[:,0]
         self.a = DHM[:,1]

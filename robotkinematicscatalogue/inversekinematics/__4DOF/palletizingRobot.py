@@ -88,7 +88,7 @@ class palletizingRobot(forwardKinematics):
             Joint[:,2] += [self.inv_joint[2] * Joint[0,1] + self.theta[1], self.inv_joint[2] * Joint[1,1] + self.theta[1]]
         
         Joint = Joint * 180 / np.pi
-        
+        print(Joint)
         solutions = np.zeros([len(Joint[:,0]) * 2**4, 4])
 
         # Make solution set assuming joint range is [-360, 360] for each joint

@@ -7,7 +7,7 @@ class TM12X(collaborativeRobot):
         # Modified Denavit-Hartenberg parameters (DHM)
         DHM = np.array([[   0,          0,          165.2,      0           ],
                         [   np.pi/2,    0,          0,          np.pi/2     ],
-                        [   0,          616.1,      0,          0           ],
+                        [   0,          636.1,      0,          0           ],
                         [   0,          557.9,      156.3,      -np.pi/2    ],
                         [   -np.pi/2,   0,          106,        0           ],
                         [   np.pi/2,    0,          113.15,     np.pi       ]])
@@ -18,8 +18,8 @@ class TM12X(collaborativeRobot):
         self.theta = DHM[:,3]
                                 
         # Joint limits provided in degrees and/or millimeters (mm)
-        self.jointMax = [270, 180, 166, 180, 180, 270]
-        self.jointMin = [-270, -180, -166, -180, -180, -270]
+        self.jointMax = [360, 360, 163, 360, 360, 360]
+        self.jointMin = [-360, -360, -163, -360, -360, -360]
         
         # Identify inverted joints - joints that rotate counterclockwise in local z-axis frame
         self.inv_joint = [1, -1, -1, -1, 1, 1]

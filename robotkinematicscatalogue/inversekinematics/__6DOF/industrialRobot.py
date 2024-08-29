@@ -80,7 +80,7 @@ class industrialRobot(sixDOF):
                 Joint[i, 2] += np.pi*2
 
             Joint[i, 1] = self.inv_joint[1] * Joint[i, 1]
-            Joint[i, 2] = self.inv_joint[2] * Joint[i, 2] + np.pi/2 + self.theta[1] + self.theta[2]
+            Joint[i, 2] = self.inv_joint[2] * (Joint[i, 2] - np.pi/2 - self.theta[1] - self.theta[2])
 
             if self.null_joint[2] == 1:
                 Joint[i, 2] += self.inv_joint[2] * Joint[i, 1]
@@ -97,8 +97,8 @@ class industrialRobot(sixDOF):
 
             Joint[i, 4] = phi[i % 2] - self.theta[4]
 
-            Joint[i, 3] = np.arctan2(T36[2,2] * np.sin(Joint[i,4]), -T36[0,2] * np.sin(Joint[i, 4]))
-            Joint[i, 5] = np.arctan2(T36[1,1] * np.sin(Joint[i,4]), -T36[1,0] * np.sin(Joint[i, 4])) - np.pi + self.theta[5]
+            Joint[i, 3] = np.arctan2(T36[2,2] * np.sin(Joint[i,4] + self.theta[4]), -T36[0,2] * np.sin(Joint[i, 4] + self.theta[4])) - self.theta[3]
+            Joint[i, 5] = np.arctan2(T36[1,1] * np.sin(Joint[i,4] + self.theta[4]), -T36[1,0] * np.sin(Joint[i, 4] + self.theta[4])) + np.pi - self.theta[5]
 
             Joint[i, 3] = self.inv_joint[3] * Joint[i, 3]
             Joint[i, 4] = self.inv_joint[4] * Joint[i, 4]

@@ -12,7 +12,7 @@ for i in range(len(joint)):
 
 printMatrix(joint)
 
-# SLIGHT ISSUE: Also converts translational joint(s) to "radians"
+# NOTE: Also converts translational joint(s) to "radians"
 TBW = usedRobot.FK(np.deg2rad(joint))
 
 print("Forward Kinematics:\n")

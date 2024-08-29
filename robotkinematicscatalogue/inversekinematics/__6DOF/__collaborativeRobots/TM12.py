@@ -7,7 +7,7 @@ class TM12(collaborativeRobot):
         # Modified Denavit-Hartenberg parameters (DHM)
         DHM = np.array([[   0,          0,          165.2,      0           ],
                         [   np.pi/2,    0,          0,          np.pi/2     ],
-                        [   0,          616.1,      0,          0           ],
+                        [   0,          636.1,      0,          0           ],
                         [   0,          557.9,      156.3,      -np.pi/2    ],
                         [   -np.pi/2,   0,          106,        0           ],
                         [   np.pi/2,    0,          113.15,     np.pi       ]])

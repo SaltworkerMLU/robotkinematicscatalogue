@@ -38,7 +38,7 @@ class collaborativeRobot(sixDOF):
             T16 = np.linalg.inv(T01) @ T06
             #phi1 = np.arccos((-T16[1, 3] - self.d[3]) / self.d[5])
             # print(np.arccos(-T16[1,2]) * 180 / np.pi)
-            phi1 = np.arccos(-T16[1,2])
+            phi1 = np.pi + np.arccos(T16[1,2])
 
             # Eliminate all solutions containing complex values
             if np.iscomplex(phi1):
@@ -46,8 +46,8 @@ class collaborativeRobot(sixDOF):
                 continue
 
             phi = [np.real(phi1), -np.real(phi1)]
+
             Joint[i, 4] = self.theta[4] + phi[i//2 % 2]
-            Joint[i, 4] *= self.inv_joint[4]
             
             # Theta6
             Joint[i, 5] = self.theta[4] + self.theta[5] + np.arctan2(-T16[1,1] / np.sin(Joint[i, 4]), T16[1,0] / np.sin(Joint[i, 4])) # + np.pi
@@ -77,7 +77,7 @@ class collaborativeRobot(sixDOF):
             #theta2
             phi1 = np.arctan2(-T14[2, 3], -T14[0, 3])
             phi2 = np.arcsin(self.a[3] * np.sin(self.inv_joint[2] * Joint[i, 2]) / T14xz)
-            Joint[i, 1] = -self.theta[1] + phi1 - phi2 + np.pi # NOTE: self.theta[1] = 0 with UR30
+            Joint[i, 1] = -self.theta[1] + phi1 - phi2 + np.pi
             Joint[i, 1] *= self.inv_joint[1] # Don't worry about it. It works
 
             #Theta4
@@ -86,6 +86,8 @@ class collaborativeRobot(sixDOF):
             T34 = np.linalg.inv(T12 @ T23) @ T14
             Joint[i, 3] = -self.theta[3] + np.arctan2(T34[1, 0], T34[0, 0])
             Joint[i, 3] *= self.inv_joint[3]
+
+            Joint[i, 4] *= self.inv_joint[4] # Thank you python very cool
 
         Joint = np.degrees(Joint)
         for i in range(len(Joint)):
