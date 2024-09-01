@@ -25,13 +25,11 @@ base64-converter : https://www.base64-image.de/
 
 ***In the branch "RobotKinematicsMaths" lies a comprehensive guide on how the used Robot Kinematics have been derived.***
 
-<!--
 ## Get started
 
 ```
 $ pip install robotkinematicscatalogue
 ```
--->
 
 ## Class UML diagram of repository
 
